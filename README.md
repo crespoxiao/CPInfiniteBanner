@@ -2,7 +2,7 @@
 
 ## 功能简介
 
-CPInfiniteBanner是一个循环播放的组件，可以左右无缝滑动。
+CPInfiniteBanner是一个循环播放的组件，可以左右无缝滑动和自动切换图片。
 
 ## 使用方法
 
@@ -23,7 +23,7 @@ pod "CPInfiniteBanner"
 
 
 ## 设计思路
-3个imageView放在scrollview上，左右2个imageview用语过度，通过scrollview的deleagte来实现逻辑。
+3个imageView放在scrollview上，左右2个imageview用于过渡，借助scrollview的deleagte来实现轮播逻辑。
 
 ## 维护者
 
@@ -31,4 +31,4 @@ CrespoXiao <http://weibo.com/crespoxiao>
 
 ## 版权声明
 
-CPInfiniteBanner is available under the MIT license. See the LICENSE file for more info.
+CPInfiniteBanner is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
