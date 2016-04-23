@@ -1,5 +1,12 @@
 # CPInfiniteBanner
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/crespoxiao/CPInfiniteBanner/blob/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/LCFInfiniteScrollView.svg)](http://cocoadocs.org/docsets/LCFInfiniteScrollView)
+[![CocoaPods](https://img.shields.io/cocoapods/p/LCFInfiniteScrollView.svg)](http://cocoadocs.org/docsets/LCFInfiniteScrollView)
+
+
+![iPhone 6](GIF/iPhone 6.gif "iPhone 6")
+
 ## 功能简介
 
 CPInfiniteBanner是一个循环播放的组件，可以左右无缝滑动和自动切换图片。
