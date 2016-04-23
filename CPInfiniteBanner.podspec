@@ -10,7 +10,7 @@
 Pod::Spec.new do |s|
   s.name             = "CPInfiniteBanner"
   s.version          = "0.2.0"
-  s.summary          = "A short description of CPInfiniteBanner."
+  s.summary          = "CPInfiniteBanner is a autoscroll banner lib."
   s.description      = <<-DESC.gsub(/^\s*\|?/,'')
                        An optional longer description of CPInfiniteBanner
 
