@@ -2,8 +2,8 @@
 //  main.m
 //  CPInfiniteBanner
 //
-//  Created by xiaochengfei on 04/23/2016.
-//  Copyright (c) 2014 xiaochengfei. All rights reserved.
+//  Created by CrespoXiao on 04/23/2016.
+//  Copyright (c) 2016 CrespoXiao. All rights reserved.
 //
 
 @import UIKit;

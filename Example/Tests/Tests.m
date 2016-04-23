@@ -2,8 +2,8 @@
 //  CPInfiniteBannerTests.m
 //  CPInfiniteBannerTests
 //
-//  Created by xiaochengfei on 04/23/2016.
-//  Copyright (c) 2015 xiaochengfei. All rights reserved.
+//  Created by CrespoXiao on 04/23/2016.
+//  Copyright (c) 2015 CrespoXiao. All rights reserved.
 //
 
 // https://github.com/kiwi-bdd/Kiwi
