@@ -32,8 +32,8 @@
     banner.frame = CGRectMake(20, 30, self.view.frame.size.width-40, 90);
     banner.placeHolder = [UIImage imageNamed:@"3.jpg"];
     banner.duration = 3.0;
+    banner.enableAutoScroll = NO;
     banner.imageArray = [NSMutableArray arrayWithArray:array];
-    
 }
 
 - (void)didReceiveMemoryWarning {

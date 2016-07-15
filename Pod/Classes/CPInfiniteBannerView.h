@@ -20,10 +20,11 @@ typedef void (^CPInfiniteBannerResponseBlock)(NSString * link);
 //image arrays of banner
 @property (nonatomic, strong) NSMutableArray                *imageArray;
 
-//duration of auto scroll
+//duration of auto scroll, default is 3
 @property (nonatomic, assign) CFTimeInterval                duration;
 
-
+//enable auto scroll, default is Yes
+@property (nonatomic, assign) BOOL enableAutoScroll;
 /**
  *  init method
  *

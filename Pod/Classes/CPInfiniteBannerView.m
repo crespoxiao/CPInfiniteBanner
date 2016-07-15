@@ -60,7 +60,7 @@
         [self addSubview:self.pageControl];
         [self makeConstraints];
         _responseBlock = [block copy];
-        
+        _enableAutoScroll = YES;
         
         if (contianer) {
             _container = contianer;
@@ -165,7 +165,10 @@
     }
 }
 
-
+- (void)setEnableAutoScroll:(BOOL)enableAutoScroll {
+    _enableAutoScroll = enableAutoScroll;
+    enableAutoScroll ? [self fireTimer]:[self stopTimer];
+}
 #pragma mark - build view
 
 - (void)buildSubViewOfScrollViewWithTag:(NSInteger)tag andImageData:(id)imageData {
@@ -252,10 +255,12 @@
 }
 
 
-
 #pragma mark - timer methods
 
 - (void)fireTimer {
+    if (!self.enableAutoScroll) {
+        return;
+    }
     [self stopTimer];
     _duration = _duration ? _duration:3;
     _timer = [NSTimer scheduledTimerWithTimeInterval:_duration target:self selector:@selector(go2Next) userInfo:nil repeats:YES];
