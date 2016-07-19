@@ -58,10 +58,11 @@
     if (self) {
         [self addSubview:self.scrollView];
         [self addSubview:self.pageControl];
-        [self makeConstraints];
         _responseBlock = [block copy];
         _enableAutoScroll = YES;
-        
+        _pageContolAliment = CPInfiniteBannerPageContolAlimentRight;
+        [self makeConstraints];
+
         if (contianer) {
             _container = contianer;
             [contianer addSubview:self];
@@ -107,16 +108,27 @@
 
 - (void)makeConstraints {
     @weakify(self);
-    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.size.mas_equalTo(self);
         make.center.mas_equalTo(self);
     }];
     
-    [self.pageControl mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.pageControl mas_remakeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.right.equalTo(self.scrollView.mas_right).offset(-5);
-        make.bottom.equalTo(self.scrollView.mas_bottom).offset(5);
+        if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentRight) {
+            make.right.equalTo(self.scrollView.mas_right).offset(-5);
+            
+        } else if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentLeft) {
+            make.left.equalTo(self.scrollView.mas_left).offset(5);
+            
+        } else if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentCenter) {
+            make.centerX.equalTo(self.scrollView.mas_centerX);
+            
+        }
+        
+        make.bottom.equalTo(self.scrollView.mas_bottom);
+
         make.height.equalTo(@20);
     }];
 }
@@ -169,6 +181,12 @@
     _enableAutoScroll = enableAutoScroll;
     enableAutoScroll ? [self fireTimer]:[self stopTimer];
 }
+
+- (void)setPageContolAliment:(CPInfiniteBannerPageContolAliment)pageContolAliment {
+    _pageContolAliment = pageContolAliment;
+    [self makeConstraints];
+}
+
 #pragma mark - build view
 
 - (void)buildSubViewOfScrollViewWithTag:(NSInteger)tag andImageData:(id)imageData {

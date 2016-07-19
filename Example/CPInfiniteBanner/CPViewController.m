@@ -33,6 +33,8 @@
     banner.placeHolder = [UIImage imageNamed:@"3.jpg"];
     banner.duration = 3.0;
     banner.enableAutoScroll = NO;
+    banner.pageContolAliment = CPInfiniteBannerPageContolAlimentLeft;
+    banner.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
     banner.imageArray = [NSMutableArray arrayWithArray:array];
 }
 
