@@ -56,18 +56,33 @@
 - (instancetype)initWithContainerView:(UIView *)contianer responseBlock:(CPInfiniteBannerResponseBlock)block {
     self = [super init];
     if (self) {
-        [self addSubview:self.scrollView];
-        [self addSubview:self.pageControl];
-        [self makeConstraints];
-        _responseBlock = [block copy];
-        
-        
+        [self commonInit];
+
         if (contianer) {
             _container = contianer;
             [contianer addSubview:self];
         }
+        
+        _responseBlock = [block copy];
+
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    [self addSubview:self.scrollView];
+    [self addSubview:self.pageControl];
+    _enableAutoScroll = YES;
+    _pageContolAliment = CPInfiniteBannerPageContolAlimentRight;
+    [self makeConstraints];
 }
 
 #pragma mark - lazy load
@@ -107,16 +122,27 @@
 
 - (void)makeConstraints {
     @weakify(self);
-    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.size.mas_equalTo(self);
         make.center.mas_equalTo(self);
     }];
     
-    [self.pageControl mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.pageControl mas_remakeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.right.equalTo(self.scrollView.mas_right).offset(-5);
-        make.bottom.equalTo(self.scrollView.mas_bottom).offset(5);
+        if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentRight) {
+            make.right.equalTo(self.scrollView.mas_right).offset(-5);
+            
+        } else if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentLeft) {
+            make.left.equalTo(self.scrollView.mas_left).offset(5);
+            
+        } else if (self.pageContolAliment == CPInfiniteBannerPageContolAlimentCenter) {
+            make.centerX.equalTo(self.scrollView.mas_centerX);
+            
+        }
+        
+        make.bottom.equalTo(self.scrollView.mas_bottom);
+
         make.height.equalTo(@20);
     }];
 }
@@ -165,6 +191,15 @@
     }
 }
 
+- (void)setEnableAutoScroll:(BOOL)enableAutoScroll {
+    _enableAutoScroll = enableAutoScroll;
+    enableAutoScroll ? [self fireTimer]:[self stopTimer];
+}
+
+- (void)setPageContolAliment:(CPInfiniteBannerPageContolAliment)pageContolAliment {
+    _pageContolAliment = pageContolAliment;
+    [self makeConstraints];
+}
 
 #pragma mark - build view
 
@@ -252,10 +287,12 @@
 }
 
 
-
 #pragma mark - timer methods
 
 - (void)fireTimer {
+    if (!self.enableAutoScroll) {
+        return;
+    }
     [self stopTimer];
     _duration = _duration ? _duration:3;
     _timer = [NSTimer scheduledTimerWithTimeInterval:_duration target:self selector:@selector(go2Next) userInfo:nil repeats:YES];

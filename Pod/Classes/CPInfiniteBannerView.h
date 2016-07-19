@@ -10,6 +10,11 @@
 
 typedef void (^CPInfiniteBannerResponseBlock)(NSString * link);
 
+typedef NS_ENUM(NSUInteger, CPInfiniteBannerPageContolAliment) {
+    CPInfiniteBannerPageContolAlimentRight = 0,
+    CPInfiniteBannerPageContolAlimentCenter,
+    CPInfiniteBannerPageContolAlimentLeft
+};
 
 
 @interface CPInfiniteBannerView : UIControl
@@ -20,9 +25,20 @@ typedef void (^CPInfiniteBannerResponseBlock)(NSString * link);
 //image arrays of banner
 @property (nonatomic, strong) NSMutableArray                *imageArray;
 
-//duration of auto scroll
+//duration of auto scroll, default is 3
 @property (nonatomic, assign) CFTimeInterval                duration;
 
+//enable auto scroll, default is Yes
+@property (nonatomic, assign) BOOL enableAutoScroll;
+
+//page contol aliment, default is CPInfiniteBannerPageContolAlimentRight
+@property (nonatomic, assign) CPInfiniteBannerPageContolAliment pageContolAliment;
+
+// scrollview to contol the images
+@property (nonatomic, strong, readonly) UIScrollView                  *scrollView;
+
+// you can cutom the pagecontol props
+@property (nonatomic, strong, readonly) UIPageControl                 *pageControl;
 
 /**
  *  init method

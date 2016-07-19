@@ -1,5 +1,3 @@
-source 'git@git.xiaojukeji.com:ios/cocoapods-specs.git'
-source 'git@git.xiaojukeji.com:one-ios/Specs.git'
 platform :ios, '7.0'
 
 # We don't use Swift internally. Disable this option.
