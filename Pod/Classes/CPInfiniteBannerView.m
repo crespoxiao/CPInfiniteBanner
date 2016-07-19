@@ -56,19 +56,33 @@
 - (instancetype)initWithContainerView:(UIView *)contianer responseBlock:(CPInfiniteBannerResponseBlock)block {
     self = [super init];
     if (self) {
-        [self addSubview:self.scrollView];
-        [self addSubview:self.pageControl];
-        _responseBlock = [block copy];
-        _enableAutoScroll = YES;
-        _pageContolAliment = CPInfiniteBannerPageContolAlimentRight;
-        [self makeConstraints];
+        [self commonInit];
 
         if (contianer) {
             _container = contianer;
             [contianer addSubview:self];
         }
+        
+        _responseBlock = [block copy];
+
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    [self addSubview:self.scrollView];
+    [self addSubview:self.pageControl];
+    _enableAutoScroll = YES;
+    _pageContolAliment = CPInfiniteBannerPageContolAlimentRight;
+    [self makeConstraints];
 }
 
 #pragma mark - lazy load
