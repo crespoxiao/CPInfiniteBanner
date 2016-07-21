@@ -25,7 +25,7 @@ CPInfiniteBanner是一个循环播放的组件，可以左右无缝滑动和自�
 目前都使用cocoapods安装，在Podfile中加入
 
 ``` 
-pod "CPInfiniteBanner" 
+pod 'CPInfiniteBanner', '~> 0.2.1' 
 ```
 
 
