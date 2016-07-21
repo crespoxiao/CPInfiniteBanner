@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CPInfiniteBanner"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "CPInfiniteBanner is an auto scroll banner lib."
   s.description      = <<-DESC.gsub(/^\s*\|?/,'')
                        An optional longer description of CPInfiniteBanner
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "CrespoXiao" => "xiaochengfei@didichuxing.com" }
-  s.source           = { :git => "https://github.com/soooban/CPInfiniteBanner.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/crespoxiao/CPInfiniteBanner.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
@@ -43,8 +43,9 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit', 'Foundation'
 
   # Uncomment following lines if CPInfiniteBanner depends on any public or private pod.
-  s.dependency 'libextobjc', '~> 0.4.1'
-  s.dependency 'SDWebImage','~>3.7.2'
-  s.dependency 'Masonry','~>0.6.3'
+
+  s.dependency 'libextobjc'
+  s.dependency 'SDWebImage'
+  s.dependency 'Masonry'
 
 end

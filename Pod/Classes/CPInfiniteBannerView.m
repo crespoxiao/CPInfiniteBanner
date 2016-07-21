@@ -26,7 +26,6 @@
 @property (nonatomic, strong) UIPageControl                 *pageControl;
 @property (nonatomic, strong) NSTimer                       *timer;
 @property (nonatomic, copy  ) CPInfiniteBannerResponseBlock responseBlock;
-@property (nonatomic, weak  ) UIView                        *container;
 @end
 
 
@@ -39,7 +38,6 @@
     _scrollView = nil;
     _pageControl = nil;
     _placeHolder = nil;
-    _container = nil;
 
     if (_timer) {
         if ([_timer isValid]) {
@@ -59,12 +57,12 @@
         [self commonInit];
 
         if (contianer) {
-            _container = contianer;
             [contianer addSubview:self];
+        } else {
+            [[[UIApplication sharedApplication].delegate window] addSubview:self];
         }
         
         _responseBlock = [block copy];
-
     }
     return self;
 }

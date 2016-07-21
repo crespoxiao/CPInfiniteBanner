@@ -30,7 +30,7 @@ pod "CPInfiniteBanner"
 
 
 ## 设计思路
-3个imageView放在scrollview上，左右2个imageview用于过渡，借助scrollview的deleagte来实现轮播逻辑。
+3个imageView放在scrollview上，左右2个imageview用于过渡，借助scrollview的deleagte来实现轮播逻辑。也可以参考别的实现方式 <https://github.com/leichunfeng/LCFInfiniteScrollView>
 
 ## 维护者
 

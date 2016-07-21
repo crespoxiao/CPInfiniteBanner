@@ -20,25 +20,25 @@ typedef NS_ENUM(NSUInteger, CPInfiniteBannerPageContolAliment) {
 @interface CPInfiniteBannerView : UIControl
 
 //placeholder of banner
-@property (nonatomic, strong) UIImage                       *placeHolder;
+@property (nonatomic, strong          ) UIImage                           *placeHolder;
 
 //image arrays of banner
-@property (nonatomic, strong) NSMutableArray                *imageArray;
+@property (nonatomic, strong          ) NSMutableArray                    *imageArray;
 
 //duration of auto scroll, default is 3
-@property (nonatomic, assign) CFTimeInterval                duration;
+@property (nonatomic, assign          ) CFTimeInterval                    duration;
 
 //enable auto scroll, default is Yes
-@property (nonatomic, assign) BOOL enableAutoScroll;
+@property (nonatomic, assign          ) BOOL                              enableAutoScroll;
 
 //page contol aliment, default is CPInfiniteBannerPageContolAlimentRight
-@property (nonatomic, assign) CPInfiniteBannerPageContolAliment pageContolAliment;
+@property (nonatomic, assign          ) CPInfiniteBannerPageContolAliment pageContolAliment;
 
 // scrollview to contol the images
-@property (nonatomic, strong, readonly) UIScrollView                  *scrollView;
+@property (nonatomic, strong, readonly) UIScrollView                      *scrollView;
 
 // you can cutom the pagecontol props
-@property (nonatomic, strong, readonly) UIPageControl                 *pageControl;
+@property (nonatomic, strong, readonly) UIPageControl                     *pageControl;
 
 /**
  *  init method
